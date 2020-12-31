@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JZRollableLabel-Swift'
-  s.version          = '0.2.0'
+  s.version          = '0.1.0'
   s.summary          = 'A label control that can roll wile displaying infomation.'
 
 # This description is used to generate tags and improve search results.
@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
   JZRollableLabel is a label control that can roll wile displaying infomation.
                        DESC
 
-  s.homepage         = 'https://github.com/JiahaoZhu11/JZRollableLabel'
+  s.homepage         = 'https://github.com/JiahaoZhu11/JZRollableLabel-Swift'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { '朱嘉皓' => 'jiahao_zhu98@outlook.com' }
-  s.source           = { :git => 'https://github.com/JiahaoZhu11/JZRollableLabel.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/JiahaoZhu11/JZRollableLabel-Swift.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   s.swift_version = '4.0'
 
