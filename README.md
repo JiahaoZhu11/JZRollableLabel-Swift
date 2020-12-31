@@ -1,9 +1,9 @@
-# JZRollableLabel-Swift
+# JZRollableLabel
 
-[![CI Status](https://img.shields.io/travis/jiahao_zhu98@outlook.com/JZRollableLabel-Swift.svg?style=flat)](https://travis-ci.org/jiahao_zhu98@outlook.com/JZRollableLabel-Swift)
-[![Version](https://img.shields.io/cocoapods/v/JZRollableLabel-Swift.svg?style=flat)](https://cocoapods.org/pods/JZRollableLabel-Swift)
-[![License](https://img.shields.io/cocoapods/l/JZRollableLabel-Swift.svg?style=flat)](https://cocoapods.org/pods/JZRollableLabel-Swift)
-[![Platform](https://img.shields.io/cocoapods/p/JZRollableLabel-Swift.svg?style=flat)](https://cocoapods.org/pods/JZRollableLabel-Swift)
+[![CI Status](https://img.shields.io/travis/jiahao_zhu98@outlook.com/JZRollableLabel.svg?style=flat)](https://travis-ci.org/jiahao_zhu98@outlook.com/JZRollableLabel)
+[![Version](https://img.shields.io/cocoapods/v/JZRollableLabel.svg?style=flat)](https://cocoapods.org/pods/JZRollableLabel)
+[![License](https://img.shields.io/cocoapods/l/JZRollableLabel.svg?style=flat)](https://cocoapods.org/pods/JZRollableLabel)
+[![Platform](https://img.shields.io/cocoapods/p/JZRollableLabel.svg?style=flat)](https://cocoapods.org/pods/JZRollableLabel)
 
 ## Example
 
@@ -13,17 +13,17 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-JZRollableLabel-Swift is available through [CocoaPods](https://cocoapods.org). To install
+JZRollableLabel is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'JZRollableLabel-Swift'
+pod 'JZRollableLabel'
 ```
 
 ## Author
 
-jiahao_zhu98@outlook.com, jiahao.zhu@maibaapp.cn
+朱嘉皓, jiahao_zhu98@outlook.com
 
 ## License
 
-JZRollableLabel-Swift is available under the MIT license. See the LICENSE file for more info.
+JZRollableLabel is available under the MIT license. See the LICENSE file for more info.
