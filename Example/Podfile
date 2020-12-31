@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'JZRollableLabel-Swift_Example' do
+  pod 'JZRollableLabel-Swift', :path => '../'
+
+  target 'JZRollableLabel-Swift_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
