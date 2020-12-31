@@ -7,8 +7,8 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'JZRollableLabel'
-  s.version          = '0.1.0'
+  s.name             = 'JZRollableLabel-Swift'
+  s.version          = '0.2.0'
   s.summary          = 'A label control that can roll wile displaying infomation.'
 
 # This description is used to generate tags and improve search results.
@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'JZRollableLabel/Classes/**/*'
+  s.source_files = 'JZRollableLabel-Swift/Classes/**/*'
   
   # s.resource_bundles = {
   #   'JZRollableLabel' => ['JZRollableLabel/Assets/*.png']
