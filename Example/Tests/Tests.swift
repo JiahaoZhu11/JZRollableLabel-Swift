@@ -1,5 +1,5 @@
 import XCTest
-import JZRollableLabel-Swift
+import JZRollableLabel_Swift
 
 class Tests: XCTestCase {
     
