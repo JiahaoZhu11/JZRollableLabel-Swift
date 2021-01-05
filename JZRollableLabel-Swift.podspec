@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'JZRollableLabel-Swift'
   s.version          = '0.1.0'
-  s.summary          = 'A label control that can roll wile displaying infomation.'
+  s.summary          = 'A label control that can roll while displaying infomation.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-  JZRollableLabel is a label control that can roll wile displaying infomation.
+  JZRollableLabel is a label control that can roll while displaying infomation.
                        DESC
 
   s.homepage         = 'https://github.com/JiahaoZhu11/JZRollableLabel-Swift'
