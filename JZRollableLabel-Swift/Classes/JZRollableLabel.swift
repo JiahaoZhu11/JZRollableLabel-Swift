@@ -137,7 +137,7 @@ open class JZRollableLabel: UIView {
         }
     }
     
-    /// The time gap before the next round of animation.
+    /// The time gap between two rounds of animation.
     public var gap: TimeInterval = 0
     
     /// The identifier if the label is rolling (or should be rolling).
@@ -553,6 +553,7 @@ extension JZRollableLabel {
 // MARK: - UILabel Function
 extension JZRollableLabel {
     
+    /// The natural size for the receiving view, considering only properties of the view itself.
     public override var intrinsicContentSize: CGSize {
         get {
             mainLabel.sizeToFit()
@@ -560,6 +561,7 @@ extension JZRollableLabel {
         }
     }
     
+    /// Resizes and moves the receiver’s content view so it just encloses its subviews.
     public override func sizeToFit() {
         mainLabel.sizeToFit()
         frame.size = mainLabel.frame.size
