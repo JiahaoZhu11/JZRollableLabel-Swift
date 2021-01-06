@@ -95,7 +95,7 @@ open class JZRollableLabel: UIView {
     }
     
     /// The visual direction of the rolling animation, only allows 2 cases: left and right.
-    private var visualDirection: Direction = .left {
+    internal var visualDirection: Direction = .left {
         didSet {
             if isRolling {
                 beginRolling()
@@ -131,7 +131,7 @@ open class JZRollableLabel: UIView {
     }
     
     /// The duration of the animation with the speed of 1.
-    private var _duration: CFTimeInterval {
+    internal var _duration: CFTimeInterval {
         get {
             return CFTimeInterval(max(leadingLabel.frame.width / UIScreen.main.bounds.width, 1) * 10)
         }
@@ -141,10 +141,10 @@ open class JZRollableLabel: UIView {
     public var gap: TimeInterval = 0
     
     /// The identifier if the label is rolling (or should be rolling).
-    private var isRolling: Bool = false
+    internal var isRolling: Bool = false
     
     /// The timer that repeats the animation.
-    private var timer: Timer?
+    internal var timer: Timer?
     
     /// The object that acts as the delegate of the rolling label.
     public var delegate: JZRollableLabelDelegate?
@@ -156,8 +156,8 @@ open class JZRollableLabel: UIView {
         }
     }
     
-    /// The private variable of the current status of the rolling animation.
-    private var _status: Status = .init {
+    /// The internal variable of the current status of the rolling animation.
+    internal var _status: Status = .init {
         didSet {
             switch _status {
             case .began:
@@ -400,14 +400,14 @@ open class JZRollableLabel: UIView {
 //    }
     
     /// The label that simulates UILabel which is displayed when the annimation is stopped.
-    private lazy var mainLabel: UILabel = {
+    internal lazy var mainLabel: UILabel = {
         let label = UILabel()
         label.isUserInteractionEnabled = false
         return label
     }()
     
     /// The view the contains the animating labels.
-    private lazy var rollingView: UIView = {
+    internal lazy var rollingView: UIView = {
         let view = UIView()
         view.isUserInteractionEnabled = false
         view.layer.masksToBounds = true
@@ -416,14 +416,14 @@ open class JZRollableLabel: UIView {
     }()
     
     /// The leading animating label.
-    private lazy var leadingLabel: UILabel = {
+    internal lazy var leadingLabel: UILabel = {
         let label = UILabel()
         label.isUserInteractionEnabled = false
         return label
     }()
     
     /// The trailing animating label.
-    private lazy var trailingLabel: UILabel = {
+    internal lazy var trailingLabel: UILabel = {
         let label = UILabel()
         label.isUserInteractionEnabled = false
         return label
@@ -541,7 +541,7 @@ extension JZRollableLabel {
     }
     
     /// The function to initiate rolling.
-    private func initRolling() {
+    internal func initRolling() {
         NotificationCenter.default.removeObserver(self)
         isRolling = false
         timer?.invalidate()
@@ -586,7 +586,7 @@ extension JZRollableLabel {
 extension JZRollableLabel {
     
     /// The getter that returns the leading rolling animation.
-    private var leadingRollingAnimation: CAAnimation {
+    internal var leadingRollingAnimation: CAAnimation {
         get {
             let distance = trailingLabel.center.x - leadingLabel.center.x
             let leadingAnimation = CABasicAnimation(keyPath: "position")
@@ -606,7 +606,7 @@ extension JZRollableLabel {
     }
     
     /// The getter that returns the trailing rolling animation.
-    private var trailingRollingAnimation: CAAnimation {
+    internal var trailingRollingAnimation: CAAnimation {
         get {
             let distance = trailingLabel.center.x - leadingLabel.center.x
             let trailingAnimation = CABasicAnimation(keyPath: "position")
@@ -668,7 +668,7 @@ extension JZRollableLabel: CAAnimationDelegate {
 }
 
 // MARK: - Timer Easy Generator
-fileprivate extension Timer {
+internal extension Timer {
     
     /// Creates a timer and schedules it on the current run loop in the default mode.
     /// Fits OS both above and below ios 10.0.
