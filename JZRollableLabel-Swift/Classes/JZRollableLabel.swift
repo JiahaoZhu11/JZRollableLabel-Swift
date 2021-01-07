@@ -158,9 +158,6 @@ open class JZRollableLabel: UIView {
         // Simulating UILabel which the user interaction is disabled by default.
         isUserInteractionEnabled = false
         
-        // Enabling all lineBreakMode values, considering support numberOfLines property in the future.
-        mainLabel.numberOfLines = 0
-        
         // Initializing visual direction according to the layout direction.
         if UIView.userInterfaceLayoutDirection(for: rollingView.semanticContentAttribute) == .leftToRight {
             visualDirection = .left

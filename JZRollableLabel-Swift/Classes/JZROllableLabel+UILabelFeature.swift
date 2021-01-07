@@ -151,22 +151,22 @@ extension JZRollableLabel {
         }
     }
     
+    // this determines the number of lines to draw and what to do when sizeToFit is called. default value is 1 (single line). A value of 0 means no limit
+    // if the height of the text reaches the # of lines or the height of the view is less than the # of lines allowed, the text will be
+    // truncated using the line break mode.
+
+    /// The maximum number of lines for rendering text.
+    public var numberOfLines: Int {
+        set {
+            mainLabel.numberOfLines = newValue
+            layoutSubviews()
+        }
+        get {
+            return mainLabel.numberOfLines
+        }
+    }
+    
     // MARK: - Not Yet Supported
-//    // this determines the number of lines to draw and what to do when sizeToFit is called. default value is 1 (single line). A value of 0 means no limit
-//    // if the height of the text reaches the # of lines or the height of the view is less than the # of lines allowed, the text will be
-//    // truncated using the line break mode.
-//
-//    /// The maximum number of lines for rendering text.
-//    public var numberOfLines: Int {
-//        set {
-//            mainLabel.numberOfLines = newValue
-//            layoutSubviews()
-//        }
-//        get {
-//            return mainLabel.numberOfLines
-//        }
-//    }
-//
 //    // these next 3 properties allow the label to be autosized to fit a certain width by scaling the font size(s) by a scaling factor >= the minimum scaling factor
 //    // and to specify how the text baseline moves when it needs to shrink the font.
 //
