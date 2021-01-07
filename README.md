@@ -12,6 +12,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 
 Minimum iOS Target: 9.0.
+Swift Version: 4.0+.
 
 ## Installation
 
@@ -26,6 +27,8 @@ pod 'JZRollableLabel'
 JZRollableLabel can be easily created and used with the following code:
 
 ```swift
+import JZRollableLabel_Swift
+
 let label = JZRollableLabel(/*frame: <any CGRect>*/)
 view.addSubview(label)
 /* Any additional operations to layout the label.
