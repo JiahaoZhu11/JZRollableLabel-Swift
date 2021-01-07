@@ -1,9 +1,25 @@
 # JZRollableLabel
 
-[![CI Status](https://img.shields.io/travis/jiahao_zhu98@outlook.com/JZRollableLabel.svg?style=flat)](https://travis-ci.org/jiahao_zhu98@outlook.com/JZRollableLabel)
-[![Version](https://img.shields.io/cocoapods/v/JZRollableLabel.svg?style=flat)](https://cocoapods.org/pods/JZRollableLabel)
-[![License](https://img.shields.io/cocoapods/l/JZRollableLabel.svg?style=flat)](https://cocoapods.org/pods/JZRollableLabel)
-[![Platform](https://img.shields.io/cocoapods/p/JZRollableLabel.svg?style=flat)](https://cocoapods.org/pods/JZRollableLabel)
+JZRollableLabel is a label control that can roll while displaying infomation.
+
+[![CI Status](https://img.shields.io/travis/jiahao_zhu98@outlook.com/JZRollableLabel-Swift.svg?style=flat)](https://travis-ci.org/jiahao_zhu98@outlook.com/JZRollableLabel-Swift)
+[![Version](https://img.shields.io/cocoapods/v/JZRollableLabel-Swift.svg?style=flat)](https://cocoapods.org/pods/JZRollableLabel-Swift)
+[![License](https://img.shields.io/cocoapods/l/JZRollableLabel-Swift.svg?style=flat)](https://cocoapods.org/pods/JZRollableLabel-Swift)
+[![Platform](https://img.shields.io/cocoapods/p/JZRollableLabel-Swift.svg?style=flat)](https://cocoapods.org/pods/JZRollableLabel-Swift)
+
+#### ⚠️ **To use with Swift 4.x please ensure you are using >= 4.0.0** ⚠️
+
+#### ⚠️ **To use with Swift 5.x please ensure you are using >= 5.0.0** ⚠️
+
+## Contents
+
+- [Example](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#example)
+- [Requirements](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#requirements)
+- [Installation](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#installation)
+- [Usage](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#usage)
+- [Property and Function](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#property-and-function)
+- [Author](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#author)
+- [License](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#license)
 
 ## Example
 
@@ -11,16 +27,38 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-Minimum iOS Target: 9.0.
-Swift Version: 4.0+.
+- Minimum iOS Target: 9.0.
+- Swift Version: 4.0+.
 
 ## Installation
 
-JZRollableLabel is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
+### CocoaPods
+
+[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```
+$ gem install cocoapods
+```
+
+ To integrate JZRollableLabel using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'JZRollableLabel'
+/* For project that is using Swift 4.x */
+pod 'JZRollableLabel', '~> 4.0.0'
+
+/* For project that is using Swift 5.x */
+pod 'JZRollableLabel', '~> 5.0.0'
 ```
+
+Then, run the following command:
+
+```
+$ pod install
+```
+
+### Manually
+
+Of course you can always integrate SnapKit into your project manually if you like! 😊
 
 ## Usage
 
@@ -107,6 +145,7 @@ The supported UILabel properties are listed below:
 | highlightedTextColor | Readwrite    | The highlight color for the label’s text.                    |
 | isHighlighted        | Readwrite    | A Boolean value that determines whether the label draws its text with a highlight. |
 | isEnabled            | Readwrite    | A Boolean value that determines whether the label draws its text in an enabled state. |
+| numberOfLines        | Readwrite    | The maximum number of lines for rendering text.              |
 
 The special functions implemented for JZRollableLabel are listed below:
 
