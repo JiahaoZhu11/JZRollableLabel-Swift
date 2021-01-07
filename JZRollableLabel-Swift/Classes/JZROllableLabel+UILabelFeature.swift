@@ -11,8 +11,7 @@ extension JZRollableLabel {
     /// The natural size for the receiving view, considering only properties of the view itself.
     public override var intrinsicContentSize: CGSize {
         get {
-            mainLabel.sizeToFit()
-            return mainLabel.frame.size
+            return mainLabel.intrinsicContentSize
         }
     }
     

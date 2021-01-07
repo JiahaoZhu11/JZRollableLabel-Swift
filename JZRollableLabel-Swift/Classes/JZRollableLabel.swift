@@ -123,6 +123,7 @@ open class JZRollableLabel: UIView {
     internal lazy var mainLabel: UILabel = {
         let label = UILabel()
         label.isUserInteractionEnabled = false
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -132,6 +133,7 @@ open class JZRollableLabel: UIView {
         view.isUserInteractionEnabled = false
         view.layer.masksToBounds = true
         view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -168,7 +170,17 @@ open class JZRollableLabel: UIView {
         
         // Setting up UI
         addSubview(mainLabel)
+        mainLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        mainLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        mainLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        mainLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
         addSubview(rollingView)
+        rollingView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        rollingView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        rollingView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        rollingView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
         rollingView.addSubview(leadingLabel)
         rollingView.addSubview(trailingLabel)
     }
