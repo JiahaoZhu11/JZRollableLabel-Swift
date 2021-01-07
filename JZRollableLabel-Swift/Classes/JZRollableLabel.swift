@@ -100,7 +100,7 @@ open class JZRollableLabel: UIView {
     }
     
     /// The internal variable of the current status of the rolling animation.
-    internal var _status: Status = .init {
+    internal var _status: Status = .`init` {
         didSet {
             switch _status {
             case .began:

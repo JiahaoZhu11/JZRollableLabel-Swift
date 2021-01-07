@@ -40,7 +40,7 @@ extension JZRollableLabel {
     public enum Status: Int {
         
         /// JZRollableLabel did initialized.
-        case `init`
+        case `init` = 0
         
         /// The rolling animation did begin.
         case began
