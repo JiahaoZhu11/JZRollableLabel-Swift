@@ -173,16 +173,18 @@ extension ExampleViewController: UITableViewDataSource {
             cell.label.delegate = cell
             cell.isRolling = true
         case 11:
-            cell.demonstratedProperties = ["lineBreakMode"]
-            cell.label.text = "This cell has its lineBreakMode set to 'byCharWrapping'."
-            cell.info = "This cell has its lineBreakMode set to 'byCharWrapping'."
+            cell.demonstratedProperties = ["lineBreakMode", "numberOfLines"]
+            cell.label.text = "This cell has its lineBreakMode set to 'byCharWrapping'. The numberOfLines property is set to 0 to enable auto line wrapping."
+            cell.info = "This cell has its lineBreakMode set to 'byCharWrapping'. The numberOfLines property is set to 0 to enable auto line wrapping"
+            cell.label.numberOfLines = 0
             cell.labelLineBreakMode = .byCharWrapping
             cell.label.delegate = cell
             cell.isRolling = true
         case 12:
-            cell.demonstratedProperties = ["lineBreakMode"]
-            cell.label.text = "This cell has its lineBreakMode set to 'byWordWrapping'."
-            cell.info = "This cell has its lineBreakMode set to 'byWordWrapping'."
+            cell.demonstratedProperties = ["lineBreakMode", "numberOfLines"]
+            cell.label.text = "This cell has its lineBreakMode set to 'byWordWrapping'. The numberOfLines property is set to 0 to enable auto line wrapping"
+            cell.info = "This cell has its lineBreakMode set to 'byWordWrapping'. The numberOfLines property is set to 0 to enable auto line wrapping"
+            cell.label.numberOfLines = 0
             cell.labelLineBreakMode = .byWordWrapping
             cell.label.delegate = cell
             cell.isRolling = true
@@ -506,7 +508,7 @@ fileprivate class JZRollableLabelCell: UITableViewCell {
                 text += ", "
             }
         }
-        titleLabel.text = text
+        titleLabel.text = text + "."
     }
     
 }
