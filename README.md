@@ -12,7 +12,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 
 Minimum iOS Target: 9.0.
-Swift Version: 5.0+.
+Swift Version: 4.0+.
 
 ## Installation
 

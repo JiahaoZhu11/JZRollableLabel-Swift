@@ -18,7 +18,6 @@ extension JZRollableLabel {
     }
     
     private func layoutUI() {
-        mainLabel.frame = bounds
         rollingView.frame = bounds
         
         leadingLabel.sizeToFit()
