@@ -57,7 +57,7 @@ extension JZRollableLabel {
         isRolling = true
         mainLabel.isHidden = true
         rollingView.isHidden = false
-            NotificationCenter.default.addObserver(self, selector: #selector(beginRolling), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(beginRolling), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         switch style {
         case .rolling:
             let leadingAnimation = leadingRollingAnimation
