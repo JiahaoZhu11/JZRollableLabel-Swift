@@ -13,21 +13,8 @@ extension JZRollableLabel {
     /// but the status might be changed multiple times, unexpectedly.
     public func beginRolling() {
         mainLabel.isHidden = true
-<<<<<<< HEAD
-        rollingView.isHidden = false
-        NotificationCenter.default.addObserver(self, selector: #selector(beginRolling), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        switch style {
-        case .rolling:
-            let leadingAnimation = leadingRollingAnimation
-            let trailingAnimation = trailingRollingAnimation
-            trailingAnimation.delegate = self
-            leadingLabel.layer.add(leadingAnimation, forKey: "JZRollableLabelAnimation")
-            trailingLabel.layer.add(trailingAnimation, forKey: "JZRollableLabelAnimation")
-        }
-=======
         coreView.isHidden = false
         coreView.beginRolling()
->>>>>>> dev
     }
     
     /// The function to terminate rolling.
