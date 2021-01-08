@@ -1,5 +1,5 @@
 //
-//  JZROllableLabel+UILabelFeature.swift
+//  JZRollableLabel+UILabelFeature.swift
 //  JZRollableLabel-Swift
 //
 //  Created by Jiahao Zhu on 2021/1/7.
@@ -19,9 +19,7 @@ extension JZRollableLabel {
     public var text: String? { // default is nil
         set {
             mainLabel.text = newValue
-            leadingLabel.text = newValue
-            trailingLabel.text = newValue
-            layoutSubviews()
+            coreView.text = newValue
         }
         get {
             return mainLabel.text
@@ -32,9 +30,7 @@ extension JZRollableLabel {
     public var font: UIFont! { // default is nil (system font 17 plain)
         set {
             mainLabel.font = newValue
-            leadingLabel.font = newValue
-            trailingLabel.font = newValue
-            layoutSubviews()
+            coreView.font = newValue
         }
         get {
             return mainLabel.font
@@ -45,9 +41,7 @@ extension JZRollableLabel {
     public var textColor: UIColor! { // default is labelColor
         set {
             mainLabel.textColor = newValue
-            leadingLabel.textColor = newValue
-            trailingLabel.textColor = newValue
-            layoutSubviews()
+            coreView.textColor = newValue
         }
         get {
             return mainLabel.textColor
@@ -58,9 +52,7 @@ extension JZRollableLabel {
     public var shadowColor: UIColor? { // default is nil (no shadow)
         set {
             mainLabel.shadowColor = newValue
-            leadingLabel.shadowColor = newValue
-            trailingLabel.shadowColor = newValue
-            layoutSubviews()
+            coreView.shadowColor = newValue
         }
         get {
             return mainLabel.shadowColor
@@ -71,9 +63,7 @@ extension JZRollableLabel {
     public var shadowOffset: CGSize { // default is CGSizeMake(0, -1) -- a top shadow
         set {
             mainLabel.shadowOffset = newValue
-            leadingLabel.shadowOffset = newValue
-            trailingLabel.shadowOffset = newValue
-            layoutSubviews()
+            coreView.shadowOffset = newValue
         }
         get {
             return mainLabel.shadowOffset
@@ -84,7 +74,16 @@ extension JZRollableLabel {
     public var textAlignment: NSTextAlignment { // default is NSTextAlignmentNatural (before iOS 9, the default was NSTextAlignmentLeft)
         set {
             mainLabel.textAlignment = newValue
-            layoutSubviews()
+            switch newValue {
+            case .left:
+                coreView.alignment = .left
+            case .right:
+                coreView.alignment = .right
+            case .center:
+                coreView.alignment = .center
+            default:
+                coreView.alignment = UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .leftToRight ? .left : .right
+            }
         }
         get {
             return mainLabel.textAlignment
@@ -95,7 +94,7 @@ extension JZRollableLabel {
     public var lineBreakMode: NSLineBreakMode { // default is NSLineBreakByTruncatingTail. used for single and multiple lines of text
         set {
             mainLabel.lineBreakMode = newValue
-            layoutSubviews()
+            coreView.layoutSubviews()
         }
         get {
             return mainLabel.lineBreakMode
@@ -106,9 +105,7 @@ extension JZRollableLabel {
     public var attributedText: NSAttributedString? { // default is nil
         set {
             mainLabel.attributedText = newValue
-            leadingLabel.attributedText = newValue
-            trailingLabel.attributedText = newValue
-            layoutSubviews()
+            coreView.attributedText = newValue
         }
         get {
             return mainLabel.attributedText
@@ -119,8 +116,7 @@ extension JZRollableLabel {
     public var highlightedTextColor: UIColor? { // default is nil
         set {
             mainLabel.highlightedTextColor = newValue
-            leadingLabel.highlightedTextColor = newValue
-            trailingLabel.highlightedTextColor = newValue
+            coreView.highlightedTextColor = newValue
         }
         get {
             return mainLabel.highlightedTextColor
@@ -131,8 +127,7 @@ extension JZRollableLabel {
     public var isHighlighted: Bool { // default is NO
         set {
             mainLabel.isHighlighted = newValue
-            leadingLabel.isHighlighted = newValue
-            trailingLabel.isHighlighted = newValue
+            coreView.isHighlighted = newValue
         }
         get {
             return mainLabel.isHighlighted
@@ -143,8 +138,7 @@ extension JZRollableLabel {
     public var isEnabled: Bool { // default is YES. changes how the label is drawn
         set {
             mainLabel.isEnabled = newValue
-            leadingLabel.isEnabled = newValue
-            trailingLabel.isEnabled = newValue
+            coreView.isEnabled = newValue
         }
         get {
             return mainLabel.isEnabled
@@ -159,7 +153,7 @@ extension JZRollableLabel {
     public var numberOfLines: Int {
         set {
             mainLabel.numberOfLines = newValue
-            layoutSubviews()
+            coreView.layoutSubviews()
         }
         get {
             return mainLabel.numberOfLines
@@ -245,9 +239,17 @@ extension JZRollableLabel {
     
     /// Resizes and moves the receiver’s content view so it just encloses its subviews.
     public override func sizeToFit() {
-        mainLabel.sizeToFit()
-        frame.size = mainLabel.frame.size
-        rollingView.frame.size = mainLabel.frame.size
+        let center = self.center
+        let frame = self.frame
+        switch coreView.alignment {
+        case .left:
+            self.frame = CGRect(x: frame.origin.x, y: center.y - intrinsicContentSize.height / 2, width: intrinsicContentSize.width, height: intrinsicContentSize.height)
+        case .right:
+            self.frame = CGRect(x: frame.maxX - intrinsicContentSize.width, y: center.y - intrinsicContentSize.height / 2, width: intrinsicContentSize.width, height: intrinsicContentSize.height)
+        case .center:
+            self.frame.size = intrinsicContentSize
+            self.center = center
+        }
     }
     
     // MARK: - Not Yet Supported

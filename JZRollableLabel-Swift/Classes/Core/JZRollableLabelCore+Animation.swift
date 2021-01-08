@@ -1,12 +1,12 @@
 //
-//  JZRollableLabel+Animation.swift
+//  JZRollableLabelCore+Animation.swift
 //  JZRollableLabel-Swift
 //
 //  Created by Jiahao Zhu on 2021/1/7.
 //
 
 // MARK: - JZRollableLabel Animation
-extension JZRollableLabel {
+extension JZRollableLabelCore {
     
     /// The getter that returns the leading rolling animation.
     internal var leadingRollingAnimation: CAAnimation {
@@ -15,11 +15,11 @@ extension JZRollableLabel {
             let leadingAnimation = CABasicAnimation(keyPath: "position")
             leadingAnimation.fromValue = leadingLabel.center
             leadingAnimation.toValue = CGPoint(x: leadingLabel.center.x - distance, y: leadingLabel.center.y)
-            leadingAnimation.duration = _duration
+            leadingAnimation.duration = duration
             leadingAnimation.autoreverses = false
             leadingAnimation.fillMode = kCAFillModeRemoved
             leadingAnimation.repeatCount = 1
-            if visualDirection == .left {
+            if direction == .left {
                 leadingAnimation.speed = distance > 0 ? speed : -speed
             } else {
                 leadingAnimation.speed = distance > 0 ? -speed : speed
@@ -35,11 +35,11 @@ extension JZRollableLabel {
             let trailingAnimation = CABasicAnimation(keyPath: "position")
             trailingAnimation.fromValue = trailingLabel.center
             trailingAnimation.toValue = CGPoint(x: trailingLabel.center.x - distance, y: trailingLabel.center.y)
-            trailingAnimation.duration = _duration
+            trailingAnimation.duration = duration
             trailingAnimation.autoreverses = false
             trailingAnimation.fillMode = kCAFillModeRemoved
             trailingAnimation.repeatCount = 1
-            if visualDirection == .left {
+            if direction == .left {
                 trailingAnimation.speed = distance > 0 ? speed : -speed
             } else {
                 trailingAnimation.speed = distance > 0 ? -speed : speed
