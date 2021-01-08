@@ -46,7 +46,7 @@ extension JZRollableLabelCore {
     @objc internal func beginRolling() {
         initRolling()
         isRolling = true
-        NotificationCenter.default.addObserver(self, selector: #selector(beginRolling), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(beginRolling), name: UIApplication.willEnterForegroundNotification, object: nil)
         switch style {
         case .rolling:
             let leadingAnimation = leadingRollingAnimation
