@@ -10,111 +10,92 @@ open class JZRollableLabel: UIView {
     
     // MARK: - Property
     /// The minimum spacing between the leading animating label and the trailing animating label.
-    public var spacing: CGFloat = 25 {
-        didSet {
-            layoutSubviews()
+    public var spacing: CGFloat {
+        set {
+            coreView.spacing = newValue
+        }
+        get {
+            return coreView.spacing
         }
     }
     
     /// The direction of the rolling animation.
     public var direction: Direction = .leading {
         didSet {
-            if direction == .leading {
-                if UIView.userInterfaceLayoutDirection(for: rollingView.semanticContentAttribute) == .leftToRight {
-                    visualDirection = .left
+            switch direction {
+            case .leading:
+                if UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .leftToRight {
+                    coreView.direction = .left
                 } else {
-                    visualDirection = .right
+                    coreView.direction = .right
                 }
-            } else if direction == .trailing {
-                if UIView.userInterfaceLayoutDirection(for: rollingView.semanticContentAttribute) == .leftToRight {
-                    visualDirection = .right
+            case .trailing:
+                if UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .leftToRight {
+                    coreView.direction = .right
                 } else {
-                    visualDirection = .left
+                    coreView.direction = .left
                 }
-            } else {
-                visualDirection = direction
-            }
-        }
-    }
-    
-    /// The visual direction of the rolling animation, only allows 2 cases: left and right.
-    internal var visualDirection: Direction = .left {
-        didSet {
-            if isRolling {
-                beginRolling()
+            case .left:
+                coreView.direction = .left
+            case .right:
+                coreView.direction = .right
             }
         }
     }
     
     /// The style of the animation.
-    public var style: Style = .rolling {
-        didSet {
-            if isRolling {
-                beginRolling()
-            }
+    public var style: Style {
+        set {
+            coreView.style = newValue
+        }
+        get {
+            return coreView.style
         }
     }
     
     /// The speed of the animation,
     /// default value is 1,
     /// representing 1 screen every 10 seconds.
-    public var speed: Float = 1 {
-        didSet {
-            if isRolling {
-                beginRolling()
-            }
+    public var speed: Float {
+        set {
+            coreView.speed = newValue
+        }
+        get {
+            return coreView.speed
         }
     }
     
     /// The duration of the animation.
     public var duration: TimeInterval {
         get {
-            return _duration / TimeInterval(speed)
-        }
-    }
-    
-    /// The duration of the animation with the speed of 1.
-    internal var _duration: CFTimeInterval {
-        get {
-            return CFTimeInterval(max(leadingLabel.frame.width / UIScreen.main.bounds.width, 1) * 10)
+            return coreView.duration / TimeInterval(speed)
         }
     }
     
     /// The time gap between two rounds of animation.
-    public var gap: TimeInterval = 0
-    
-    /// The identifier if the label is rolling (or should be rolling).
-    internal var isRolling: Bool = false
-    
-    /// The timer that repeats the animation.
-    internal var timer: Timer?
+    public var gap: TimeInterval {
+        set {
+            coreView.gap = newValue
+        }
+        get {
+            return coreView.gap
+        }
+    }
     
     /// The object that acts as the delegate of the rolling label.
-    public var delegate: JZRollableLabelDelegate?
+    public var delegate: JZRollableLabelDelegate? {
+        set {
+            coreView.delegate = newValue
+        }
+        get {
+            return coreView.delegate
+        }
+    }
     
     /// The current status of the rolling animation, read-only.
     public var status: Status {
         get {
-            return _status
-        }
-    }
-    
-    /// The internal variable of the current status of the rolling animation.
-    internal var _status: Status = .`init` {
-        didSet {
-            switch _status {
-            case .began:
-                NSLog("Rolling Animation did begin")
-                delegate?.rollingDidStart?()
-            case .ended:
-                NSLog("Rolling Animation did end")
-                delegate?.rollingDidStop?(finished: true)
-            case .stopped:
-                NSLog("Rolling Animation did stop")
-                delegate?.rollingDidStop?(finished: false)
-            default:
-                break
-            }
+            return coreView.status
         }
     }
     
@@ -128,27 +109,12 @@ open class JZRollableLabel: UIView {
     }()
     
     /// The view the contains the animating labels.
-    internal lazy var rollingView: UIView = {
-        let view = UIView()
+    internal lazy var coreView: JZRollableLabelCore = {
+        let view = JZRollableLabelCore()
         view.isUserInteractionEnabled = false
-        view.layer.masksToBounds = true
-        view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
         return view
-    }()
-    
-    /// The leading animating label.
-    internal lazy var leadingLabel: UILabel = {
-        let label = UILabel()
-        label.isUserInteractionEnabled = false
-        return label
-    }()
-    
-    /// The trailing animating label.
-    internal lazy var trailingLabel: UILabel = {
-        let label = UILabel()
-        label.isUserInteractionEnabled = false
-        return label
     }()
     
     // MARK: - Initializer
@@ -158,13 +124,6 @@ open class JZRollableLabel: UIView {
         // Simulating UILabel which the user interaction is disabled by default.
         isUserInteractionEnabled = false
         
-        // Initializing visual direction according to the layout direction.
-        if UIView.userInterfaceLayoutDirection(for: rollingView.semanticContentAttribute) == .leftToRight {
-            visualDirection = .left
-        } else {
-            visualDirection = .right
-        }
-        
         // Setting up UI
         addSubview(mainLabel)
         mainLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
@@ -172,23 +131,15 @@ open class JZRollableLabel: UIView {
         mainLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         mainLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        addSubview(rollingView)
-        rollingView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        rollingView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        rollingView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        rollingView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
-        rollingView.addSubview(leadingLabel)
-        rollingView.addSubview(trailingLabel)
+        addSubview(coreView)
+        coreView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        coreView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        coreView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        coreView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Deinitializer
-    deinit {
-        initRolling()
     }
     
 }
