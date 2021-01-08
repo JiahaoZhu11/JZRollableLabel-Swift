@@ -8,7 +8,11 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JZRollableLabel-Swift'
+<<<<<<< HEAD
   s.version          = '4.0.2'
+=======
+  s.version          = '5.0.2'
+>>>>>>> swift5
   s.summary          = 'A label control that can roll while displaying infomation.'
 
 # This description is used to generate tags and improve search results.
