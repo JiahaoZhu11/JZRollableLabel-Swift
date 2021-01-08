@@ -17,7 +17,7 @@ extension JZRollableLabelCore {
             leadingAnimation.toValue = CGPoint(x: leadingLabel.center.x - distance, y: leadingLabel.center.y)
             leadingAnimation.duration = duration
             leadingAnimation.autoreverses = false
-            leadingAnimation.fillMode = kCAFillModeRemoved
+            leadingAnimation.fillMode = CAMediaTimingFillMode.removed
             leadingAnimation.repeatCount = 1
             if direction == .left {
                 leadingAnimation.speed = distance > 0 ? speed : -speed
@@ -37,7 +37,7 @@ extension JZRollableLabelCore {
             trailingAnimation.toValue = CGPoint(x: trailingLabel.center.x - distance, y: trailingLabel.center.y)
             trailingAnimation.duration = duration
             trailingAnimation.autoreverses = false
-            trailingAnimation.fillMode = kCAFillModeRemoved
+            trailingAnimation.fillMode = CAMediaTimingFillMode.removed
             trailingAnimation.repeatCount = 1
             if direction == .left {
                 trailingAnimation.speed = distance > 0 ? speed : -speed

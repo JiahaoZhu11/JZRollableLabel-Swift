@@ -97,7 +97,7 @@ internal class JZRollableLabelCore: UIView {
     internal var delegate: JZRollableLabelDelegate?
     
     /// The current status of the rolling animation.
-    internal var status: JZRollableLabel.Status = .init {
+    internal var status: JZRollableLabel.Status = .`init` {
         didSet {
             switch status {
             case .began:
