@@ -13,13 +13,31 @@ JZRollableLabel is a label control that can roll while displaying infomation.
 
 ## Contents
 
+- [Update](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#update)
+  - [New Feature](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#new-feature)
+  - [Bug Fixed](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#bug-fixed)
 - [Example](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#example)
 - [Requirements](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#requirements)
 - [Installation](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#installation)
+  - [CocoaPods](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#cocoapods)
+  - [Manually](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#manually)
 - [Usage](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#usage)
 - [Property and Function](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#property-and-function)
 - [Author](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#author)
 - [License](https://github.com/JiahaoZhu11/JZRollableLabel-Swift#license)
+
+## Update
+
+### New Feature
+
+- The property 'numberOfLines' is currently supported.
+- The rolling core is seperated from the outside shell, so now there is no exposed function that should not be called.
+- Due to the same reason as above, the limitation of implementing CAAnimationDelegate for a subclass of JZRollableLabel no longer exists.
+
+### Bug Fixed
+
+- The logic of intrinsticContentSize is now fixed.
+- The layout problem while no height is specified is now fixed.
 
 ## Example
 
@@ -149,12 +167,10 @@ The supported UILabel properties are listed below:
 
 The special functions implemented for JZRollableLabel are listed below:
 
-| Function                                                     | Description                                                  | Note                                                         |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| beginRolling()                                               | The function to begin rolling.                               | Can be called before laying out the control, but the status might be changed multiple times, unexpectedly. |
-| stopRolling(immediately: Bool)                               | The function to terminate rolling.                           | The status will not change to "stop" if the animation is already ended. |
-| animationDidStart(**_** anim: CAAnimation)                   | CAAnimationDelegate function, called while animation is began. | Remember to call 'super.animationDidStart(**_** anim: CAAnimation)' while subclassing JZRollableLabel, otherwise the rolling functions and properties might not work properly. |
-| animationDidStop(**_** anim: CAAnimation, finished flag: Bool) | CAAnimationDelegate function, called while animation is stopped. | Remember to call 'super.animationDidStop(**_** anim: CAAnimation, finished flag: Bool)' while subclassing JZRollableLabel, otherwise the rolling functions and properties might not work properly. |
+| Function                       | Description                        | Note                                                         |
+| ------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
+| beginRolling()                 | The function to begin rolling.     | Can be called before laying out the control, but the status might be changed multiple times, unexpectedly. |
+| stopRolling(immediately: Bool) | The function to terminate rolling. | The status will not change to "stop" if the animation is already ended. |
 
 ## Author
 
